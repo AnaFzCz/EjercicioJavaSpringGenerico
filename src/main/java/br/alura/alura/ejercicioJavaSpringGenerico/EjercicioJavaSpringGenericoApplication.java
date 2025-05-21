@@ -10,7 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import static br.alura.alura.ejercicioJavaSpringGenerico.Evaluacion.mediaNota;
 
 @SpringBootApplication
 public class EjercicioJavaSpringGenericoApplication implements CommandLineRunner {
@@ -81,6 +85,20 @@ public class EjercicioJavaSpringGenericoApplication implements CommandLineRunner
         Tarefa tarea = objectMapper.readValue(new File("TareaObjetWrite.json"), Tarefa.class);
         System.out.println("Tarea leída desde JSON:");
         System.out.println(tarea);
+        System.out.println("*****************************************************");
+        System.out.println("Ejercicio 6");
+
+//
+        List<Evaluacion<String>> evaluaciones = new ArrayList<>();
+
+        evaluaciones.add(new Evaluacion<>("Lapiz", 8.5, "Librería"));
+        evaluaciones.add(new Evaluacion<>("Puerta", 9.0, "Carpintero"));
+        evaluaciones.add(new Evaluacion<>("Mantenimiento", 7.5, "Fontanero"));
+
+        double promedio = mediaNota(evaluaciones);
+        System.out.println("Promedio de evaluación: " + promedio);
+
+        System.out.println(evaluaciones);
 
 
     }
